@@ -1,4 +1,5 @@
 from pathlib import Path
+from telnetlib import AUTHENTICATION
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -126,4 +127,7 @@ DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+]
